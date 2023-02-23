@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_23_115415) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_23_121601) do
+  create_table "images", force: :cascade do |t|
+    t.string "imagem_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -19,6 +25,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_115415) do
     t.string "district"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "image_id", null: false
+    t.index ["image_id"], name: "index_posts_on_image_id"
   end
 
+  add_foreign_key "posts", "images"
 end
