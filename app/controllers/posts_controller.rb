@@ -15,13 +15,8 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
-
-    if @post.save
-      render json: @post, status: :created, location: @post
-    else
-      render json: @post.errors, status: :unprocessable_entity
-    end
+    @posts = Post.create!(post_params)
+    redirect_to @posts
   end
 
   # PATCH/PUT /posts/1
@@ -46,6 +41,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description, :cep, :street, :district, :image)
+      params.require(:post).permit(:title, :description, :cep, :street, :district, images: [])
     end
 end
