@@ -10,6 +10,7 @@ namespace :dev do
         title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
         description: Faker::Lorem.sentence(word_count: 50, supplemental: false, random_words_to_add: 4),
         cep: Faker::Address.postcode,
+        city: Faker::Address.city,
         street: Faker::Address.street_name,
         district: Faker::Address.community
       )
