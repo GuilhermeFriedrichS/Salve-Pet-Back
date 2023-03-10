@@ -12,7 +12,8 @@ namespace :dev do
         cep: Faker::Address.postcode,
         city: Faker::Address.city,
         street: Faker::Address.street_name,
-        district: Faker::Address.community
+        district: Faker::Address.community,
+        user: User.all.sample
       )
     end
 
